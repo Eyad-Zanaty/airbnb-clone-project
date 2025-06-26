@@ -1,2 +1,3 @@
 # airbnb-clone-project
-Booking airticket online
+**Project Goal:** Booking airticket online
+**Stack:** Backend

@@ -1,8 +1,8 @@
 # airbnb-clone-project
 **Project Goal:** Booking airticket online\
 **Stack:** Backend Stack\
-\
-## Team Roles
+
+## ["Team Roles"]
 
 This project involves collaboration across several technical roles, each contributing specific expertise to ensure a secure, scalable, and maintainable backend system.
 

@@ -2,7 +2,7 @@
 **Project Goal:** Booking airticket online\
 **Stack:** Backend Stack\
 \
-## Project Roles & Responsibilities
+## Team Roles
 
 This project involves collaboration across several technical roles, each contributing specific expertise to ensure a secure, scalable, and maintainable backend system.
 

@@ -19,7 +19,7 @@ Implements CI/CD pipelines, configures deployment environments, monitors infrast
 
 ---
 
-## Technology Stack
+## ["Technology Stack"]
 
 - **Backend Framework**: Django
 - **Database**: PostgreSQL
@@ -76,7 +76,7 @@ Implements CI/CD pipelines, configures deployment environments, monitors infrast
 
 ---
 
-## Feature Breakdown
+## ["Feature Breakdown"]
 
 ### User Management
 Users can register, log in, and manage their profiles. This feature ensures secure access and allows personalization of the user experience.

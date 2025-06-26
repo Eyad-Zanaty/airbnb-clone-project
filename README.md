@@ -19,7 +19,7 @@ Implements CI/CD pipelines, configures deployment environments, monitors infrast
 
 ---
 
-## "Technology Stack"
+## Technology Stack
 
 - **Backend Framework**: Django
 - **Database**: PostgreSQL

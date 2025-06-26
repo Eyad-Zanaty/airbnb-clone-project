@@ -2,12 +2,28 @@
 **Project Goal:** Booking airticket online\
 **Stack:** Backend Stack\
 \
-**Team Roles**\
-Database Design: databases should communicate together, how integrations should work, and how to ensure that the product is secure and stable.\
-Backend Role: ITRex offers back-end web development services, including building full applications or supporting front-end teams on a flexible basis. They specialize in creating customer portals, e-commerce sites, and enterprise web apps. Their solutions connect IT systems, integrate third-party tools, and provide secure APIs that automate tasks and improve business efficiency.\
-DevOps engineer: Facilitates cooperation between development and operations teams. Builds continuous integration and continuous delivery (CI/CD) pipelines for faster delivery.\
-QA engineers: design and implement quality assurance processes and procedures that help prevent defects at later stages of development.\
-\
+## Project Roles & Responsibilities
+
+This project involves collaboration across several technical roles, each contributing specific expertise to ensure a secure, scalable, and maintainable backend system.
+
+### Backend Developer
+Responsible for designing and implementing server-side logic, APIs, authentication, and business rules. Works closely with the database and integrates front-end requests, ensuring all functionality is delivered securely and efficiently.
+
+### Database Administrator (DBA)
+Handles the design, optimization, security, and maintenance of the database system. Ensures data integrity, sets up backups, and optimizes queries to maintain high performance and scalability.
+
+### DevOps Engineer
+Sets up CI/CD pipelines, deployment environments, monitoring tools, and infrastructure automation. Ensures smooth delivery of code updates and keeps the system stable and scalable through containerization (e.g., Docker) and cloud services.
+
+### Frontend Developer (if applicable)
+Collaborates with the backend team to consume APIs and render data on the user interface. Ensures seamless user interactions with the system and helps validate API responses in real-time applications.
+
+### QA Engineer (Quality Assurance)
+Writes and runs automated and manual tests to ensure the application meets business requirements and is free of bugs. Participates in CI/CD workflows to catch issues early during the development cycle.
+
+### Project Manager (Optional/Advanced Teams)
+Coordinates tasks, deadlines, and communication among all team members. Ensures alignment with client requirements and keeps the development process on track through planning and regular updates.
+
 **Technology Stack**\
 Python: programming the backend.\
 Django: a framework used with python and RESTAPI.\

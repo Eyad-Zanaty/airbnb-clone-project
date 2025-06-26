@@ -1,184 +1,123 @@
-# airbnb-clone-project
-**Project Goal:** Booking airticket online\
-**Stack:** Backend Stack\
-
-# Backend Roles in Property Booking System
+# Real Estate Booking Platform
 
 ## Project Overview
-This document outlines the various backend roles in a team project for a property booking system. The project aims to build a scalable, secure, and user-friendly platform for property rentals.
 
----
-
-## Technologies Used
-
-- Python
-- Django
-- Django Rest Framework
-- PostgreSQL
-- Docker
-- GitHub Actions
-- Third-party APIs (e.g., Stripe, PayPal)
+This project is a real estate booking platform that allows users to list properties, make bookings, manage payments, and leave reviews. It is built with a robust back-end to handle complex operations and ensure data consistency, performance, and security. The system is suitable for individuals or companies who want to list, rent, or manage real estate properties online.
 
 ---
 
 ## Team Roles
 
-### 1. Backend Developer
+### Backend Developer
+Responsible for building and maintaining the server-side logic, APIs, and integration with databases. Ensures the performance, scalability, and security of the application.
 
-**Responsibilities:**
+### Database Administrator (DBA)
+Manages the database design, optimization, and maintenance. Ensures data integrity and implements backup and recovery solutions.
 
-- Develop and maintain server-side logic.
-- Create APIs using Django Rest Framework.
-- Implement authentication and authorization.
-- Integrate third-party services (e.g., Stripe, PayPal).
-- Optimize performance and scalability.
+### DevOps Engineer
+Implements CI/CD pipelines, configures deployment environments, monitors infrastructure, and ensures high availability and performance.
 
-### 2. Database Administrator (DBA)
+---
 
-**Responsibilities:**
+## Technology Stack
 
-- Design and manage the PostgreSQL database schema.
-- Ensure data consistency and integrity.
-- Optimize queries for performance.
-- Handle backups and data recovery plans.
-
-### 3. DevOps Engineer
-
-**Responsibilities:**
-
-- Set up and manage Docker containers.
-- Implement CI/CD pipelines using GitHub Actions.
-- Monitor application performance and uptime.
-- Ensure secure deployment processes.
-
-### 4. Frontend Developer
-
-**Responsibilities:**
-
-- Collaborate with backend developers to integrate APIs.
-- Ensure frontend components work seamlessly with backend services.
-- Test API endpoints from the client side.
-
-### 5. QA Engineer (Quality Assurance)
-
-**Responsibilities:**
-
-- Write unit and integration tests for APIs.
-- Conduct manual and automated testing.
-- Report bugs and ensure bug fixes before deployment.
-
-### 6. Project Manager
-
-**Responsibilities:**
-
-- Coordinate between team members.
-- Track progress and deadlines.
-- Facilitate communication and resolve blockers.
+- **Backend Framework**: Django
+- **Database**: PostgreSQL
+- **Containerization**: Docker
+- **API Testing**: Postman
+- **Version Control**: Git + GitHub
+- **CI/CD**: GitHub Actions (or alternatives like Jenkins)
+- **Deployment**: AWS / DigitalOcean / Render
 
 ---
 
 ## Database Design
 
 ### Users
-
-**Key Fields:**
-
-- id (Primary Key)
-- name
-- email
-- password_hash
-- role (guest, host, admin)
-
-**Relationships:**
-
-- One-to-many with Properties
-- One-to-many with Bookings
-- One-to-many with Reviews
+- `id`
+- `username`
+- `email`
+- `password_hash`
 
 ### Properties
-
-**Key Fields:**
-
-- id
-- title
-- description
-- location
-- price_per_night
-- host_id (ForeignKey to Users)
-
-**Relationships:**
-
-- One-to-many with Bookings
-- One-to-many with Reviews
+- `id`
+- `title`
+- `description`
+- `price_per_night`
+- `owner_id` (ForeignKey to Users)
 
 ### Bookings
-
-**Key Fields:**
-
-- id
-- user_id (ForeignKey to Users)
-- property_id (ForeignKey to Properties)
-- start_date
-- end_date
-- total_price
+- `id`
+- `user_id` (ForeignKey to Users)
+- `property_id` (ForeignKey to Properties)
+- `check_in_date`
+- `check_out_date`
 
 ### Reviews
+- `id`
+- `user_id` (ForeignKey to Users)
+- `property_id` (ForeignKey to Properties)
+- `rating`
+- `comment`
 
-**Key Fields:**
+### Payments
+- `id`
+- `booking_id` (ForeignKey to Bookings)
+- `amount`
+- `payment_date`
+- `status`
 
-- id
-- user_id (ForeignKey to Users)
-- property_id (ForeignKey to Properties)
-- rating
-- comment
+#### Relationships
+- A user can own multiple properties.
+- A user can make multiple bookings.
+- A booking is for one property and one user.
+- A property can have multiple reviews.
+- A payment is linked to a specific booking.
 
 ---
 
-## API Design
+## Feature Breakdown
+
+### User Management
+Users can register, log in, and manage their profiles. This feature ensures secure access and allows personalization of the user experience.
+
+### Property Management
+Users can create, update, and delete property listings. Each listing includes details like title, description, price, and images.
+
+### Booking System
+Users can book available properties for specific dates. This module handles date validation, availability checks, and booking history.
+
+### Review System
+After booking, users can leave reviews on properties. This adds credibility to listings and helps other users make decisions.
+
+### Payment Integration
+Secure payment processing is integrated with each booking. Ensures a smooth and safe financial transaction between users and the platform.
+
+---
+
+## API Security
 
 ### Authentication
+Uses secure login mechanisms (e.g., JWT or session-based auth) to verify user identity.
 
-- **POST /api/register** – Create a new user
-- **POST /api/login** – User login and token retrieval
+### Authorization
+Restricts access to resources based on user roles and ownership, ensuring that only authorized users can edit or delete data.
 
-### Properties
+### Rate Limiting
+Prevents abuse by limiting the number of requests from a user/IP in a given time window.
 
-- **GET /api/properties** – List all properties
-- **POST /api/properties** – Create a new property (host only)
-- **GET /api/properties/{id}** – Get property details
-
-### Bookings
-
-- **GET /api/bookings** – List user bookings
-- **POST /api/bookings** – Create a booking
-- **DELETE /api/bookings/{id}** – Cancel a booking
-
-### Reviews
-
-- **POST /api/reviews** – Add a review to a property
-- **GET /api/reviews/{property_id}** – List all reviews for a property
+**Why security is important:**
+- Protects sensitive user data like emails and passwords.
+- Ensures that financial transactions are safe and reliable.
+- Prevents misuse or unauthorized access to system features.
 
 ---
 
-## Testing and Deployment
+## CI/CD Pipeline
 
-### Testing
+CI/CD pipelines automate testing, building, and deployment processes. They help maintain code quality, catch bugs early, and deliver new features faster.
 
-- Use Django’s built-in test framework.
-- Write unit tests for all API endpoints.
-- Integrate tests into GitHub Actions CI/CD.
-
-### Deployment
-
-- Containerize the application using Docker.
-- Use GitHub Actions for CI/CD pipeline.
-- Deploy on cloud platforms (e.g., Heroku, AWS).
-
----
-
-## Security Considerations
-
-- Use environment variables to store secrets.
-- Implement JWT for authentication.
-- Use HTTPS in production.
-- Sanitize inputs to prevent SQL injection and XSS.
+**Tools:**
+- GitHub Actions: Automate testing, linting, and deployment.
+- Docker: Ensures consistent environments across development and production.
+- AWS / Render / Railway: For automated and reliable deployment.
